@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297302535123",
+    "project_id": "projeto-pi-602ea",
+    "storage_bucket": "projeto-pi-602ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297302535123:android:02617133cfdc9d97941d26",
+        "android_client_info": {
+          "package_name": "com.pi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297302535123-nk1bd9f63upavlgtb5dpvpacp1atkuls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxamgCgsDaQhkqoUcr3eZwbxuksWoGaKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297302535123-nk1bd9f63upavlgtb5dpvpacp1atkuls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
