@@ -6,7 +6,7 @@ import {
     } from "react-native"
 import auth from '@react-native-firebase/auth'    
 
-export default function Home(){
+export function Home(){
     return(
         <View>
             <Text>Tela de Home</Text>

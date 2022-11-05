@@ -6,11 +6,14 @@ import {
         TouchableOpacity,
         Alert
         } from "react-native";
-import auth from '@react-native-firebase/auth'
+import auth from '@react-native-firebase/auth';
+import { useNavigation } from "@react-navigation/native";
 
 export default function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigation = useNavigation();
 
     function logon(){
         if( email === '' || password === ''){
@@ -58,6 +61,10 @@ export default function Login(){
             </TouchableOpacity>
             <TouchableOpacity style={{ height:40, width:'90%', backgroundColor:'blue', marginTop:5, justifyContent:'center', alignItems:'center', borderRadius:5}} onPress={login}>
                 <Text style={{ color:'white'}}>Entrar no App</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Acessos')}>
+                <Text>tela de login</Text>
             </TouchableOpacity>
         </View>
     )
