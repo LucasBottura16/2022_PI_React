@@ -51,7 +51,7 @@ export default function Login(){
                 onChangeText={value => setPassword(value)}
                 style={{ borderWidth:1, height:40, width:'90%', marginTop:10, paddingLeft:10, borderRadius:5}}
                 placeholder='Senha'
-                placeholderTextColor={'green'}
+                placeholderTextColor={'red'}
             />
             <TouchableOpacity style={{ height:40, width:'90%', backgroundColor:'green', marginTop:10, justifyContent:'center', alignItems:'center', borderRadius:5}} onPress={logon}>
                 <Text style={{ color:'white'}}>Criar conta</Text>
