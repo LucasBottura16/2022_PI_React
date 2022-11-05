@@ -9,24 +9,30 @@ const Stack = createStackNavigator();
 export function NavigStack() {
   return (
     
-    <Stack.Navigator>
+    <Stack.Navigator 
+    screenOptions={{headerStyle:{backgroundColor:'#2460DA', borderBottomLeftRadius:15, borderBottomRightRadius:15, height:70}, headerTintColor:'white'}}
+    >
 
       <Stack.Screen 
       name="Acessos" 
       component={Acessos} 
+      options={{headerShown: false}}
       />
 
       <Stack.Screen 
       name="Login" 
-      component={Login} 
+      component={Login}
+      options={{title:'Tela de Login '}}
       />
       <Stack.Screen 
       name="Revendedor" 
       component={CadRevendedor} 
+      options={{title:'Cadastro de Revendedor '}}
       />
       <Stack.Screen 
       name="Empresa" 
       component={CadEmpresa} 
+      options={{title:'Cadastro de Empresa '}}
       />
 
     </Stack.Navigator>
