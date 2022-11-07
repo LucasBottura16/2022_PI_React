@@ -34,6 +34,7 @@ export function NavigStack() {
       component={CadEmpresa} 
       options={{title:'Cadastro de Empresa '}}
       />
+    
 
     </Stack.Navigator>
   );

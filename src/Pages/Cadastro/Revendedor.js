@@ -14,6 +14,7 @@ import firestore from '@react-native-firebase/firestore'
 export default function CadRevendedor(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confpassword, setConfpassword] = useState('');
     const [nome, setNome] = useState('');
     const [cpf, setCpf] = useState('');
     const [phone, setPhone] = useState('');
@@ -75,7 +76,15 @@ export default function CadRevendedor(){
             .doc('Endereço')
             .set(enviEn)
             .then(() => {
-                console.log('Revendedor Cadastrado');
+                firestore()
+                .collection('Clientes')
+                .doc('Verificação')
+                .collection(userUid)
+                .doc('Verificado')
+                .set({Atual: 1})
+                .then(() => {
+                    console.log('Revendedor Cadastrado');
+                });
             });
         });
     }
@@ -85,6 +94,11 @@ export default function CadRevendedor(){
             Alert.alert('Algo deu errado', 'Preencha todos os campos')
             return;
         };
+
+        if(password != confpassword ){
+            Alert.alert('confirme as senhas', 'As senhas não correspondem')
+            return;
+        }
 
         await auth().createUserWithEmailAndPassword(email, password)
         .then(cadastrarRev)
@@ -194,13 +208,21 @@ export default function CadRevendedor(){
                     placeholder='*******'
                     placeholderTextColor={'grey'}
                 />
+                <Text style={{marginTop:15, fontSize:16}}>CONFRIMAR SENHA</Text>
+                <TextInput 
+                    value={confpassword}
+                    onChangeText={value => setConfpassword(value)}
+                    style={{ borderBottomWidth:0.5, height:40, width:'90%', paddingLeft:10, borderRadius:5}}
+                    placeholder='*******'
+                    placeholderTextColor={'grey'}
+                />
 
                 <View style={{marginTop:20, marginBottom:-20}}>
                         {options.map(option => (
                             <View key={option} style={{flexDirection:'row'}}>
                                 <TouchableOpacity style={{width:25, height:25, borderWidth:1, backgroundColor:'white', marginBottom:10, borderRadius:20}} onPress={() => pickCheck(option)}>
                                 {check.includes(option) && (
-                                <Text style={{alignSelf:'center', backgroundColor:'black', width:25, height:25, textAlign:'center', color:'white',borderRadius:20}}>✓</Text>
+                                <Text style={{alignSelf:'center', backgroundColor:'#2460DA', width:25, height:25, textAlign:'center', color:'white',borderRadius:20}}>✓</Text>
                                 )} 
                                 </TouchableOpacity>
                                 <Text style={{marginLeft:5, paddingRight:0, fontSize:15}}>{option}</Text>

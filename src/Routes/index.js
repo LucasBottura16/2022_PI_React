@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
-import { Home } from '../Pages/Home';
-import { NavigStack } from '../Navigator/NavigatorStack';
+import { NavigStack } from '../Navigator/NavigatorStackDesLog';
+import { NavigStacklog } from '../Navigator/NavigatorStackLog';
 
 
 export function Routes() {
@@ -21,7 +21,7 @@ export function Routes() {
   if (initializing) return null;
   return (
     
-    !user ? <NavigStack/> : <Home/>
+    !user ? <NavigStack/> : <NavigStacklog/>
 
   );
 }

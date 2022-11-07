@@ -14,6 +14,7 @@ import firestore from '@react-native-firebase/firestore'
 export default function CadEmpresa(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confpassword, setConfpassword] = useState('');
     const [nome, setNome] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [phone, setPhone] = useState('');
@@ -79,7 +80,15 @@ export default function CadEmpresa(){
             .doc('Endereço')
             .set(enviEn)
             .then(() => {
-                console.log('Empresa Cadastrado');
+                firestore()
+                .collection('Clientes')
+                .doc('Verificação')
+                .collection(userUid)
+                .doc('Verificado')
+                .set({Atual: null})
+                .then(() => {
+                    console.log('Empresa Cadastrado');
+                });
             });
         });
     }
@@ -89,6 +98,11 @@ export default function CadEmpresa(){
             Alert.alert('Algo deu errado', 'Preencha todos os campos')
             return;
         };
+
+        if(password != confpassword ){
+            Alert.alert('confirme as senhas', 'As senhas não correspondem')
+            return;
+        }
 
         auth().createUserWithEmailAndPassword(email, password)
         .then(cadastrarEmp)
@@ -108,7 +122,7 @@ export default function CadEmpresa(){
                     placeholder='Nome da Empresa'
                     placeholderTextColor={'grey'}
                 />
-                <Text style={{marginTop:15, fontSize:16}}>CPF</Text>
+                <Text style={{marginTop:15, fontSize:16}}>CNPJ23.345.766</Text>
                 <TextInput 
                     value={cnpj}
                     onChangeText={value => setCnpj(value)}
@@ -146,7 +160,7 @@ export default function CadEmpresa(){
                     value={cep}
                     onChangeText={value => setCep(value)}
                     style={{ borderBottomWidth:0.5, height:40, width:'90%', paddingLeft:10, borderRadius:5}}
-                    placeholder='00000-00'
+                    placeholder='00000-000'
                     placeholderTextColor={'grey'}
                 />
                 <View style={{flexDirection:'row', width:'100%'}}>
@@ -214,13 +228,21 @@ export default function CadEmpresa(){
                     placeholder='*******'
                     placeholderTextColor={'grey'}
                 />
+                <Text style={{marginTop:15, fontSize:16}}>CONFRIMAR SENHA</Text>
+                <TextInput 
+                    value={confpassword}
+                    onChangeText={value => setConfpassword(value)}
+                    style={{ borderBottomWidth:0.5, height:40, width:'90%', paddingLeft:10, borderRadius:5}}
+                    placeholder='*******'
+                    placeholderTextColor={'grey'}
+                />
 
                 <View style={{marginTop:20, marginBottom:-20}}>
                         {options.map(option => (
                             <View key={option} style={{flexDirection:'row'}}>
                                 <TouchableOpacity style={{width:25, height:25, borderWidth:1, backgroundColor:'white', marginBottom:10, borderRadius:20}} onPress={() => pickCheck(option)}>
                                 {check.includes(option) && (
-                                <Text style={{alignSelf:'center', backgroundColor:'black', width:25, height:25, textAlign:'center', color:'white',borderRadius:20}}>✓</Text>
+                                <Text style={{alignSelf:'center', backgroundColor:'#2460DA', width:25, height:25, textAlign:'center', color:'white',borderRadius:20}}>✓</Text>
                                 )} 
                                 </TouchableOpacity>
                                 <Text style={{marginLeft:5, paddingRight:0, fontSize:15}}>{option}</Text>
