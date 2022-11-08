@@ -8,6 +8,7 @@ import {
         Image, 
         Alert
     } from "react-native"
+import { useNavigation } from "@react-navigation/native";    
 
 export default function Home(){
     const [pesq, setPesq] = useState('');
@@ -16,6 +17,7 @@ export default function Home(){
     const [cat3, setCat3] = useState(null);
     const [cat4, setCat4] = useState(null);
 
+    const navigation = useNavigation();
 
     function selcat1(){
         setCat1('open')
@@ -82,14 +84,18 @@ export default function Home(){
             </View>
             <View style={{flexDirection:'row', justifyContent:'space-between', borderBottomWidth:0.5, paddingBottom:5, marginRight:25}}>
                 <View style={{justifyContent:'space-between'}}>
-                    <Text style={{fontSize:19, fontWeight:'500'}}>Nome do catálogo</Text>
-                    <Text style={{fontSize:11, marginTop:-20}}>NOME DA EMPRESA / CATEGORIA</Text>
-                    <TouchableOpacity style={{backgroundColor:'#2460DA', borderRadius:5, height:31, width:230, justifyContent:'center', alignItems:'center'}}>
+                    <Text style={{fontSize:19, fontWeight:'500'}}>Formosa Pet</Text>
+                    <Text style={{fontSize:11, marginTop:-20}}>São Paulo / Pet Shop</Text>
+                    <TouchableOpacity style={{backgroundColor:'#2460DA', borderRadius:5, height:31, width:230, justifyContent:'center', alignItems:'center'}} onPress={() => navigation.navigate('Produtos')}>
                         <Text style={{color:'white'}}>Acessar</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
                     <TouchableOpacity style={{backgroundColor:'#F0F0f0', width:70, height:70, borderRadius:10, marginLeft:5}}>
+                    <Image
+                    source={require('../../Assets/pet.png')}
+                    style={{width:70, height:70, borderRadius:10}}
+                    />
                     </TouchableOpacity>
                     <Image
                     source={require('../../Assets/stars.png')}
@@ -100,7 +106,7 @@ export default function Home(){
             <View style={{flexDirection:'row', justifyContent:'space-between', borderBottomWidth:0.5, paddingBottom:5, marginRight:25, marginTop:20}}>
                 <View style={{justifyContent:'space-between'}}>
                     <Text style={{fontSize:19, fontWeight:'500'}}>Nome do catálogo</Text>
-                    <Text style={{fontSize:11, marginTop:-20}}>NOME DA EMPRESA / CATEGORIA</Text>
+                    <Text style={{fontSize:11, marginTop:-20}}>LOCALIDADE / CATEGORIA</Text>
                     <TouchableOpacity onPress={solicitar} style={{backgroundColor:'#2460DA', borderRadius:5, height:31, width:230, justifyContent:'center', alignItems:'center'}}>
                         <Text style={{color:'white'}}>Solicitar Acesso</Text>
                     </TouchableOpacity>
@@ -117,7 +123,7 @@ export default function Home(){
             <View style={{flexDirection:'row', justifyContent:'space-between', borderBottomWidth:0.5, paddingBottom:5, marginRight:25, marginTop:20}}>
                 <View style={{justifyContent:'space-between'}}>
                     <Text style={{fontSize:19, fontWeight:'500'}}>Nome do catálogo</Text>
-                    <Text style={{fontSize:11, marginTop:-20}}>NOME DA EMPRESA / CATEGORIA</Text>
+                    <Text style={{fontSize:11, marginTop:-20}}>LOCALIDADE / CATEGORIA</Text>
                     <TouchableOpacity onPress={solicitar} style={{backgroundColor:'#2460DA', borderRadius:5, height:31, width:230, justifyContent:'center', alignItems:'center'}}>
                         <Text style={{color:'white'}}>Solicitar Acesso</Text>
                     </TouchableOpacity>
@@ -193,7 +199,7 @@ export default function Home(){
             <View style={{flexDirection:'row', justifyContent:'space-between', borderBottomWidth:0.5, paddingBottom:5, marginRight:25, marginTop:30}}>
                 <View style={{justifyContent:'space-between'}}>
                     <Text style={{fontSize:19, fontWeight:'500'}}>Nome do catálogo</Text>
-                    <Text style={{fontSize:11, marginTop:-20}}>NOME DA EMPRESA / CATEGORIA</Text>
+                    <Text style={{fontSize:11, marginTop:-20}}>LOCALIDADE / CATEGORIA</Text>
                     <TouchableOpacity onPress={solicitar} style={{backgroundColor:'#2460DA', borderRadius:5, height:31, width:230, justifyContent:'center', alignItems:'center'}}>
                         <Text style={{color:'white'}}>Solicitar Acesso</Text>
                     </TouchableOpacity>
@@ -210,7 +216,7 @@ export default function Home(){
             <View style={{flexDirection:'row', justifyContent:'space-between', borderBottomWidth:0.5, paddingBottom:20, marginRight:25, marginTop:20}}>
                 <View style={{justifyContent:'space-between'}}>
                     <Text style={{fontSize:19, fontWeight:'500'}}>Nome do catálogo</Text>
-                    <Text style={{fontSize:11, marginTop:-20}}>NOME DA EMPRESA / CATEGORIA</Text>
+                    <Text style={{fontSize:11, marginTop:-20}}>LOCALIDADE / CATEGORIA</Text>
                     <TouchableOpacity onPress={solicitar} style={{backgroundColor:'#2460DA', borderRadius:5, height:31, width:230, justifyContent:'center', alignItems:'center'}}>
                         <Text style={{color:'white'}}>Solicitar Acesso</Text>
                     </TouchableOpacity>
